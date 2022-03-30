@@ -1,9 +1,11 @@
+import HeaderBar from "./HeaderBar";
+import LoginForm from "./LoginForm";
 
 function App() {
-  let name = 'Roy';
   return (
     <div>
-      Hello world!
+      <HeaderBar />
+      <LoginForm />
     </div>
 
   );
