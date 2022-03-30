@@ -2,6 +2,7 @@ import React from 'react';
 import './LoginForm.css';
 import { data } from './data';
 import { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 function handleClick() {
     return alert('The link was clicked.');
@@ -38,6 +39,11 @@ const LoginForm = () => {
             <div className="form-floating">
                 <input type="password" className="form-control" onChange={handlePassword} value={inPassword}></input>
                 <label htmlFor="floatingPassword">Password</label>
+            </div>
+            <div>
+                not registed ?
+                <span><Link to='/registerForm'> click here</Link> </span>
+                to regiser
             </div>
             <button className="w-100 btn btn-lg btn-primary" type="submit">
                 Sign in
