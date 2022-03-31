@@ -1,6 +1,6 @@
 import HeaderBar from "./HeaderBar";
 import LoginForm from "./LoginForm";
-import RegisterForm from "./registerForm";
+import RegisterForm from "./RegisterForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 
@@ -11,7 +11,7 @@ function App() {
         <HeaderBar />
         <Routes>
           <Route path="/" element={<LoginForm />} />
-          <Route path='/registerForm' element={<RegisterForm />} />
+          <Route path='/RegisterForm' element={<RegisterForm />} />
 
         </Routes>
       </BrowserRouter>
