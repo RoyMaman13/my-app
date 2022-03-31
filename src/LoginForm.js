@@ -4,9 +4,6 @@ import { data } from './data';
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
 
-function handleClick() {
-    return alert('The link was clicked.');
-}
 
 const LoginForm = () => {
 

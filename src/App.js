@@ -1,24 +1,21 @@
 import HeaderBar from "./HeaderBar";
 import LoginForm from "./LoginForm";
-import RegisterForm from "./registerForm";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import RegisterForm from "./RegisterForm";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 
 function App() {
   return (
     <div>
-      <Router>
+      <BrowserRouter>
         <HeaderBar />
-        <Switch>
-          <Route exact path='/' >
-            <LoginForm />
-          </Route>
-          <Route exact path='/registerForm'>
-            <RegisterForm />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+        <Routes>
+          <Route path="/" element={<LoginForm />} />
+          <Route path='/registerForm' element={<RegisterForm />} />
+
+        </Routes>
+      </BrowserRouter>
+    </div >
 
   );
 }
