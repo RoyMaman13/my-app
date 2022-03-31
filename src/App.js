@@ -1,6 +1,6 @@
 import HeaderBar from "./HeaderBar";
 import LoginForm from "./LoginForm";
-import RegisterForm from "./RegisterForm";
+import RegisterForm from "./registerForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 
