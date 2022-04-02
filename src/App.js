@@ -1,22 +1,40 @@
-import HeaderBar from "./HeaderBar";
-import LoginForm from "./LoginForm";
-import RegisterForm from "./RegisterForm";
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import React from 'react';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import { BrowserRouter, Routes, Link, Route } from "react-router-dom";
 
+import Login from "./components/login.component";
+import SignUp from "./components/signup.component";
 
 function App() {
-  return (
-    <div>
-      <BrowserRouter>
-        <HeaderBar />
-        <Routes>
-          <Route path="/" element={<LoginForm />} />
-          <Route path='/RegisterForm' element={<RegisterForm />} />
+  return (<BrowserRouter>
+    <div className="App">
+      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        <div className="container">
+          <Link className="navbar-brand" to={"/sign-in"}>ChatSap</Link>
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to={"/sign-in"}>Sign in</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-        </Routes>
-      </BrowserRouter>
-    </div >
-
+      <div className="outer">
+        <div className="inner">
+          <Routes>
+            <Route exact path='/' element={<Login />} />
+            <Route path="/sign-in" element={<Login />} />
+            <Route path="/sign-up" element={<SignUp />} />
+          </Routes>
+        </div>
+      </div>
+    </div></BrowserRouter>
   );
 }
 
