@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 
 const Login = (props) => {
-    const h = props.handleLogin;
+
     return (
         <div className="outer">
             <div className="inner">
-                <form onSubmit={() => h}>
-                    <h3>Log in</h3>
+                <form onSubmit={(event) => {
+                    event.preventDefault();
+                    props.handleLogin('bbb')
+                }}>
+                    <h3>Log in <br /> {props.user}</h3>
                     <div className="form-group">
                         <label>Email</label>
                         <input type="email" className="form-control" placeholder="Enter email" />
