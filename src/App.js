@@ -9,7 +9,9 @@ import { useState } from 'react';
 import { data } from './data';
 
 function App() {
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState(null);
+  const [updateData, setData] = useState(data);
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -29,10 +31,10 @@ function App() {
           </div>
         </nav>
         <Routes>
-          <Route exact path='/' element={<Login user={user} handleLogin={setUser} />} />
-          <Route exact path="/sign-in" element={<Login user={user} handleLogin={setUser} />} />
-          <Route exact path="/sign-up" element={<SignUp />} />
-          <Route exact path="/chat-screen" element={<ChatScreen />} />
+          <Route exact path='/' element={<Login setUser={setUser} updateData={updateData} />} />
+          <Route exact path="/sign-in" element={<Login setUser={setUser} updateData={updateData} />} />
+          <Route exact path="/sign-up" element={<SignUp setUser={setUser} updateData={updateData} setData={setData} />} />
+          <Route exact path="/chat-screen" element={<ChatScreen user={user} />} />
         </Routes>
       </div>
 
