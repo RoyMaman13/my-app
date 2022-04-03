@@ -7,6 +7,8 @@ import Login from "./components/login.component";
 import ChatScreen from "./components/chat.screen.component";
 import { useState } from 'react';
 import { data } from './data';
+import ChatBody from "./components/chatBody/ChatBody";
+import Nav from "./components/nav/Nav";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,10 +33,11 @@ function App() {
           </div>
         </nav>
         <Routes>
-          <Route exact path='/' element={<Login setUser={setUser} updateData={updateData} />} />
+          {/* <Route exact path='/' element={<Login setUser={setUser} updateData={updateData} />} />
           <Route exact path="/sign-in" element={<Login setUser={setUser} updateData={updateData} />} />
           <Route exact path="/sign-up" element={<SignUp setUser={setUser} updateData={updateData} setData={setData} />} />
-          <Route exact path="/chat-screen" element={<ChatScreen user={user} />} />
+          <Route exact path="/chat-screen" element={<ChatScreen user={user} />} /> */
+            <Route exact path='/' element={<ChatBody />} />}
         </Routes>
       </div>
 
