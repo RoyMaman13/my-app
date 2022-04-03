@@ -4,7 +4,7 @@ import './App.css';
 import { BrowserRouter, Routes, Link, Route } from "react-router-dom";
 import SignUp from "./components/signup.component";
 import Login from "./components/login.component";
-import ChatShell from "./components/ChatShell";
+import ChatScreen from "./components/chat.screen.component";
 import { useState } from 'react';
 import { data } from './data';
 
@@ -34,7 +34,7 @@ function App() {
           <Route exact path='/' element={<Login setUser={setUser} updateData={updateData} />} />
           <Route exact path="/sign-in" element={<Login setUser={setUser} updateData={updateData} />} />
           <Route exact path="/sign-up" element={<SignUp setUser={setUser} updateData={updateData} setData={setData} />} />
-          <Route exact path="/chat-screen" element={<ChatShell user={user} />} />
+          <Route exact path="/chat-screen" element={<ChatScreen user={user} />} />
         </Routes>
       </div>
 
