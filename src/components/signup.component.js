@@ -1,22 +1,50 @@
-import React, { Component } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = (props) => {
     const nevigate = useNavigate();
-
     let inUsername = null;
     let inPassword = null;
     let inVerifyPassword = null;
     let inNickname = null;
     let inPicture = null;
 
+    const pictureHandler = (event) => {
+        inPicture = event.target.files[0];
+    }
+
+    const isUsernameValide = (inUsername) => {
+        const exist = props.updateData.find(({ username }) => username === inUsername);
+        if (exist !== undefined) { return false; }
+        else { return true; }
+    }
+
+    const isNicknameValid = (inNickname) => {
+        if (inNickname === "" || inNickname === null) { return false; }
+        else { return true; }
+    }
+    const isPasswordValide = (inPassword) => { }
+    const isPasswordEquals = (inPassword, verifyPassword) => { }
+
     const submitHendler = (event) => {
         event.preventDefault();
+        //verify uniqe username.
         inUsername = document.getElementById("email").value;
+        if (!isUsernameValide(inUsername)) {
+            alert("Invalide Username !");
+            return;
+        }
+        //verify not empty.
+        inNickname = document.getElementById("nickname").value;
+        if (!isNicknameValid(inNickname)) {
+            alert("Invalide Nickname !");
+            return;
+        }
+        //verify password==verifyPassword.
         inPassword = document.getElementById("password").value;
         inVerifyPassword = document.getElementById("verifyPassword").value;
-        inNickname = document.getElementById("nickname").value;
-        inPicture = document.getElementById("picture").value;
+        //if empty, set defualt.
+        // inPicture = document.getElementById("picture");
 
         let data = props.updateData;
         data.push({
@@ -48,7 +76,7 @@ const SignUp = (props) => {
 
                     <div className="form-group">
                         <label>Picture</label>
-                        <input id="picture" type="file" className="form-control" placeholder="Picture" />
+                        <input id="picture" type="file" className="form-control" placeholder="Picture" onChange={pictureHandler} />
                     </div>
 
                     <div className="form-group">
