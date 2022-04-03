@@ -1,0 +1,14 @@
+.sidebar {
+    background-color:darkgray;
+    height: 95%;
+    width: 25%;
+    position:sticky;
+    border-radius: 10px;
+}
+
+.chat-button{
+    text-align: center;
+    /* margin: auto; */
+    /* width:90%; */
+    /* left: 50%; */
+}
