@@ -6,8 +6,8 @@ export const data =
             nickname: 'admin',
             pic: '',
             chatHistory: {
-                chatWith: 'yonatan@gmail.com',
-                messegeHistory: [],
+                chatWith: 'yonatan@gmail.com'
+                messegeHistory: []
             }
         },
         {
