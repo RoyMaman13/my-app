@@ -9,7 +9,7 @@ const ChatScreen = (props) => {
         <div className='container outer inner-chat '>
             <div className='wrapper'>
                 <div>
-                    <ChatListTemplate />
+                    <h1>Chat List</h1>
                 </div>
                 <div>
                     <h1>Messege Screen</h1>
