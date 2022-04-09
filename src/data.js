@@ -4,11 +4,7 @@ export const data =
             username: 'admin@gmail.com',
             password: '1234',
             nickname: 'admin',
-            pic: '',
-            chatHistory: {
-                chatWith: 'yonatan@gmail.com'
-                messegeHistory: []
-            }
+            pic: ''
         },
         {
             username: 'yonatan@gmail.com',
