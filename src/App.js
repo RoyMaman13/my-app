@@ -2,9 +2,9 @@ import React from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter, Routes, Link, Route } from "react-router-dom";
-import SignUp from "./components/signup.component";
-import Login from "./components/login.component";
-import ChatScreen from "./components/chat.screen.component";
+import SignUp from "./components/SignUpScreen";
+import Login from "./components/LoginScreen";
+import ChatScreen from "./components/ChatScreen";
 import { useState } from 'react';
 import { data } from './data';
 
