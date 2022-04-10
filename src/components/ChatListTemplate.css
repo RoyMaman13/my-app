@@ -1,7 +1,6 @@
 .main__chatlist {
     border-right: 1px solid #ebe7fb;
     padding: 0 40px 0 0px;
-    
 }
 
 .chatlist__heading {
@@ -150,7 +149,4 @@
     border-radius: 50%;
     width: 100%;
     height: 100%;
-}
-.tryme{
-    background-color: #000;
 }

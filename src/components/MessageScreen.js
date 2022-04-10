@@ -1,8 +1,8 @@
 import React from 'react'
-import "./ChatListTemplate.css";
 
-const ChatListItems = (props) => {
+export const MessageScreen = (props) => {
     return (
+
         <div>
             {props.chats.map(({ nickname, pic, messegeHistory }) => {
                 let lastMessegeIndex = messegeHistory.length - 1;
@@ -18,5 +18,4 @@ const ChatListItems = (props) => {
         </div>
     )
 }
-
-export default ChatListItems
+export default MessageScreen

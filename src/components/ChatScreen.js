@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './ChatScreen.css'
 import ChatListTemplate from './ChatListTemplate'
 import ChatList from './ChatList'
+import MessageScreen from './MessageScreen'
 
 
 const ChatScreen = (props) => {
@@ -9,10 +10,10 @@ const ChatScreen = (props) => {
         <div className='container outer inner-chat '>
             <div className='wrapper'>
                 <div>
-                    <h1>Chat List</h1>
+                    <ChatList user={props.user} />
                 </div>
                 <div>
-                    <h1>Messege Screen</h1>
+                    {/* <MessageScreen user={props.user} /> */}
                 </div>
             </div>
         </div>
