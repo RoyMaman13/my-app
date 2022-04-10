@@ -2,10 +2,13 @@ import React from 'react'
 import './LoginForm.css'
 import { Link } from "react-router-dom"
 import { useState } from 'react';
+import { data } from './data';
+import { useNavigate } from "react-router-dom";
 
 
 const RegisterForm = () => {
 
+    const nevigate = useNavigate();
     const [inUsername, setInUsername] = useState('');
     const [inPassword, setInPassword] = useState('');
     const [inNickname, setInNickname] = useState('');
@@ -21,9 +24,31 @@ const RegisterForm = () => {
     const handleNickname = (event) => {
         setInNickname(event.target.value);
     }
+    const HandleSubmit = (event) => {
+        event.preventDefault();
+        const found = data.find(({ username }) => username === inUsername);
+        if (inUsername === '') {
+            alert("The username field is empty");
+            return;
+        }
+        if (inPassword.length < 4) {
+            alert("The password must contain at least 4 charcters");
+            return;
+        }
+        if (inNickname === '') {
+            alert("The nickname field is empty");
+            return;
+        }
+
+        if (found.username) {
+            alert("The username is already in use");
+            return;
+        }
+        nevigate("/ChatTry")
+    };
 
     return (
-        <form className='form-signin text-center vsc-initialized'>
+        <form className='form-signin text-center vsc-initialized' onSubmit={HandleSubmit}>
             <img className="mb-4" src="logo512.png" alt="" width="72" height="57"></img>
             <h1 className="h3 mb-3 fw-normal">Please sign up</h1>
 
