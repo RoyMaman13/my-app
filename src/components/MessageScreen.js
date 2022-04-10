@@ -4,7 +4,7 @@ export const MessageScreen = (props) => {
     return (
 
         <div>
-            {/* {props.chats.map(({ nickname, pic, messegeHistory }) => {
+            {props.chats.map(({ nickname, pic, messegeHistory }) => {
                 return (
                     <div className="chatlist__items">
                         <img src={pic} alt="#" />
@@ -13,7 +13,7 @@ export const MessageScreen = (props) => {
                         <p>{messegeHistory[lastMessegeIndex].messege}</p>
                     </div>
                 );
-            })} */}
+            })}
         </div>
     )
 }
