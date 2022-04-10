@@ -35,7 +35,7 @@ function App() {
           <Route exact path='/' element={<Login setUser={setUser} updateData={updateData} />} />
           <Route exact path="/sign-in" element={<Login setUser={setUser} updateData={updateData} />} />
           <Route exact path="/sign-up" element={<SignUp setUser={setUser} updateData={updateData} setData={setData} />} />
-          <Route exact path="/chat-screen" element={<ChatScreen user={user} />} />
+          <Route exact path="/chat-screen" element={<ChatScreen user={user} setData={setData} />} />
         </Routes>
       </div>
 

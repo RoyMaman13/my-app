@@ -13,7 +13,7 @@ const ChatScreen = (props) => {
                     <ChatList user={props.user} />
                 </div>
                 <div>
-                    <MessageScreen user={props.user} />
+                    <MessageScreen user={props.user} setData={props.setData} />
                 </div>
             </div >
         </div >
