@@ -31,6 +31,7 @@ function App() {
           </div>
         </nav>
         <Routes>
+
           <Route exact path='/' element={<Login setUser={setUser} updateData={updateData} />} />
           <Route exact path="/sign-in" element={<Login setUser={setUser} updateData={updateData} />} />
           <Route exact path="/sign-up" element={<SignUp setUser={setUser} updateData={updateData} setData={setData} />} />

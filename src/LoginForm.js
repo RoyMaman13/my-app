@@ -2,10 +2,12 @@ import React from 'react';
 import './LoginForm.css';
 import { data } from './data';
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 
 const LoginForm = () => {
+    const navigate = useNavigate();
 
     const [inUsername, setInUsername] = useState('');
     const [inPassword, setInPassword] = useState('');
@@ -18,14 +20,16 @@ const LoginForm = () => {
         setInPassword(event.target.value);
     }
 
-    const handleSubmit = (event) => {
+    const HandleSubmit = (event) => {
         event.preventDefault();
         const found = data.find(({ username, password }) => username === inUsername && password === inPassword);
-        alert(found.username);
+        if (found.username) {
+            navigate("/ChatTry");
+        }
     };
 
     return (
-        <form className='form-signin text-center vsc-initialized' onSubmit={handleSubmit}>
+        <form className='form-signin text-center vsc-initialized' onSubmit={HandleSubmit}>
             <img className="mb-4" src="logo512.png" alt="" width="72" height="57"></img>
             <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
