@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react';
 import React, { useState } from 'react'
+import "./chatContent.css";
+
 
 
 let inMessage = null;
@@ -15,6 +17,7 @@ export const MessageScreen = (props) => {
     const SendMessage = (event) => {
         event.preventDefault();
         inMessage = document.getElementById("newMessage").value;
+        document.getElementById("newMessage").value = '';
         let newMessage = [...messegesHistory];
         newMessage.push({
             from: '',
@@ -27,16 +30,38 @@ export const MessageScreen = (props) => {
     return (
         <form onSubmit={SendMessage}>
             <div>
+
                 {messegesHistory.map(({ from, messege, time }) => {
                     let sender = (from !== '') ? chatWith : "Me";
-                    return (
-                        <div>
-                            {sender + ": " + messege}
-                        </div>
-                    );
+                    if (sender !== 'Me') {
+                        return (
+                            <div className="chat__item__content">
+                                <div className="chat__item-friend">
+                                    <div className="chat__meta">
+                                        <div>
+                                            {sender + ": " + messege}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    }
+                    else {
+                        return (
+                            <div className="chat__item__me">
+                                <div className="chat__item">
+                                    <div>
+                                        {sender + ": " + messege}
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    }
                 })}
-                <input type="text" id="newMessage" className="form-control" placeholder="Write a message" />
 
+                <div className="content__footer">
+                    <input type="text" id="newMessage" className="sendNewMessage" placeholder="Write a message" />
+                </div>
 
             </div>
         </form>
