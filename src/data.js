@@ -22,7 +22,7 @@ export const data =
                         },
                         {
                             from: '',
-                            messege: 'great',
+                            messege: '    Lorem, ipsum dolor sit veniam nostrum. Voluptatibus pariatur quia aliquid placeat ex, dicta culpa, repellendus animi libero fugit eum consequatur impedit ut a, cum perspiciatis non. Quasi quos exercitationem ducimus sapiente cupiditate non fugiat earum dignissimos illum voluptate id temporibus vel illo fugit corporis, autem labore reprehenderit deleniti sit, tempora repudiandae maxime. Nemo ut quam omnis repellendus modi amet error ullam impedit, quaerat commodi et. Ab, doloribus.',
                             time: '16:11, 10/4/2022'
                         }
                     ]
