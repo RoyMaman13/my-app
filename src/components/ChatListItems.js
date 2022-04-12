@@ -2,17 +2,26 @@ import React from 'react'
 import "./ChatListTemplate.css";
 
 const ChatListItems = (props) => {
+
     return (
-        <div>
+        <div className='chatlist_items'>
             {props.chats.map(({ nickname, pic, messegeHistory }) => {
                 let lastMessegeIndex = messegeHistory.length - 1;
                 return (
-                    <div className="chatlist__items">
-                        <img src={pic} alt="#" />
-                        {nickname}
-                        <p>{messegeHistory[lastMessegeIndex].time}</p>
-                        <p>{messegeHistory[lastMessegeIndex].messege}</p>
-                    </div>
+                    <button onClick={() => alert(nickname)}>
+                        <div className="chatlist_item">
+                            <img src={pic} alt="#" />
+                            <span className='chat_info'>
+                                <span className='chat_meta' >
+                                    <span className='nick'>{nickname}</span>
+                                    <span className='time'> {messegeHistory[lastMessegeIndex].time}</span>
+                                </span>
+                                <span className='chat_msg'>
+                                    {messegeHistory[lastMessegeIndex].messege}
+                                </span>
+                            </span>
+                        </div>
+                    </button>
                 );
             })}
         </div>
