@@ -90,7 +90,7 @@
 .chat__item__content {
   background-color: #4462ff;
   color: #fff;
-  padding: 15px;
+  padding: 5px;
   border-radius: 10px 10px 0 10px;
   max-width: 50%;
   min-width: 215px;
@@ -99,7 +99,7 @@
 .chat__item__me {
   background-color: green;
   color: #fff;
-  padding: 15px;
+  padding: 5px;
   border-radius: 10px 10px 0 10px;
   max-width: 50%;
   min-width: 215px;
@@ -176,6 +176,7 @@
   outline: none;
 }
 #sendMsgBtn {
+
   background-color:green;
   color: #fff;
 }
