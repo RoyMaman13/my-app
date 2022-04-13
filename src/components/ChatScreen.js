@@ -1,22 +1,19 @@
 import React, { Component } from 'react'
 import './ChatScreen.css'
-import ChatListTemplate from './ChatListTemplate'
 import ChatList from './ChatList'
 import MessageScreen from './MessageScreen'
 import { useState } from 'react'
 
 
 const ChatScreen = (props) => {
-    const [chats, setChats] = useState(props.user.chats);
-
     return (
         <div className='container outer inner-chat '>
             <div className='wrapper'>
                 <div>
-                    <ChatList user={props.user} chats={chats} setChats={() => setChats} />
+                    <ChatList user={props.user} chats={props.user.chats} updateData={props.updateData} />
                 </div>
                 <div>
-                    <MessageScreen user={props.user} />
+                    {/* <MessageScreen user={props.user} /> */}
                 </div>
             </div>
         </div>

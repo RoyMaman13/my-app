@@ -15,7 +15,7 @@ const Login = (props) => {
         inputPassword = document.getElementById("password").value;
         const found = props.updateData.find(({ username, password }) => username === inputUsername && password === inputPassword);
         if (found !== undefined) {
-            props.setUser(found);
+            props.setConnectedUsername(found.username);
             nevigate("/chat-screen")
         }
     }

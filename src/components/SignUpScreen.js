@@ -46,15 +46,14 @@ const SignUp = (props) => {
         //if empty, set defualt.
         // inPicture = document.getElementById("picture");
 
-        let data = props.updateData;
-        data.push({
+        props.updateData.push({
             username: inUsername,
             password: inPassword,
             nickname: inNickname,
-            pic: inPicture
+            pic: "",
+            chats: []
         })
-        props.setData(data);
-        props.setUser(props.updateData.find(({ username }) => username === inUsername));
+        props.setConnectedUsername(props.updateData.find(({ username }) => username === inUsername).username);
         nevigate("/chat-screen")
     }
 

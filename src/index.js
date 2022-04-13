@@ -6,9 +6,9 @@ import App from "./App";
 const Index = () => {
 
   return (
-    <React.Fragment>
+    <React.StrictMode>
       <App />
-    </React.Fragment>
+    </React.StrictMode>
   )
 }
 
