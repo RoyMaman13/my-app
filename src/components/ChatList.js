@@ -62,7 +62,7 @@ const ChatList = (props) => {
                         </Modal.Footer>
                     </Form>
                 </Modal>
-                <ChatListItems chats={props.chats} />
+                <ChatListItems setActiveChatUsername={props.setActiveChatUsername} chats={props.chats} />
             </div>
         </div>
     )

@@ -12,19 +12,34 @@ export const data =
                     pic: 'https://img.icons8.com/fluency/344/person-male.png',
                     messegeHistory: [
                         {
+                            type: 'text',
                             from: '',
                             messege: 'Hello',
                             time: '16:00, 10/4/2022'
                         },
                         {
+                            type: 'photo',
                             from: 'other',
-                            messege: 'How are you ?',
+                            messege: 'https://cdn-icons-png.flaticon.com/512/5375/5375879.png',
                             time: '16:10, 10/4/2022'
                         },
                         {
+                            type: 'text',
                             from: '',
                             messege: '    Lorem, ipsum dolor sit veniam nostrum. Voluptatibus pariatur quia aliquid placeat ex, dicta culpa, repellendus animi libero fugit eum consequatur impedit ut a, cum perspiciatis non. Quasi quos exercitationem ducimus sapiente cupiditate non fugiat earum dignissimos illum voluptate id temporibus vel illo fugit corporis, autem labore reprehenderit deleniti sit, tempora repudiandae maxime. Nemo ut quam omnis repellendus modi amet error ullam impedit, quaerat commodi et. Ab, doloribus.',
                             time: '16:11, 10/4/2022'
+                        },
+                        {
+                            type: 'photo',
+                            from: '',
+                            messege: 'https://cdn-icons-png.flaticon.com/512/5375/5375879.png',
+                            time: '16:10, 10/4/2022'
+                        },
+                        {
+                            type: 'text',
+                            from: 'other',
+                            messege: 'Hello',
+                            time: '16:00, 10/4/2022'
                         }
                     ]
                 },
@@ -51,6 +66,41 @@ export const data =
                     ]
                 },
                 {
+                    username: 'Neta@gmail.com',
+                    nickname: 'Neta',
+                    pic: 'https://img.icons8.com/officel/452/person-male.png',
+                    messegeHistory: []
+                }, {
+                    username: 'Neta@gmail.com',
+                    nickname: 'Neta',
+                    pic: 'https://img.icons8.com/officel/452/person-male.png',
+                    messegeHistory: []
+                }, {
+                    username: 'Neta@gmail.com',
+                    nickname: 'Neta',
+                    pic: 'https://img.icons8.com/officel/452/person-male.png',
+                    messegeHistory: []
+                }, {
+                    username: 'Neta@gmail.com',
+                    nickname: 'Neta',
+                    pic: 'https://img.icons8.com/officel/452/person-male.png',
+                    messegeHistory: []
+                }, {
+                    username: 'Neta@gmail.com',
+                    nickname: 'Neta',
+                    pic: 'https://img.icons8.com/officel/452/person-male.png',
+                    messegeHistory: []
+                }, {
+                    username: 'Neta@gmail.com',
+                    nickname: 'Neta',
+                    pic: 'https://img.icons8.com/officel/452/person-male.png',
+                    messegeHistory: []
+                }, {
+                    username: 'Neta@gmail.com',
+                    nickname: 'Neta',
+                    pic: 'https://img.icons8.com/officel/452/person-male.png',
+                    messegeHistory: []
+                }, {
                     username: 'Neta@gmail.com',
                     nickname: 'Neta',
                     pic: 'https://img.icons8.com/officel/452/person-male.png',
