@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Form, Button, InputGroup, FormControl } from "react-bootstrap";
+
 
 const SignUp = (props) => {
     const nevigate = useNavigate();
@@ -10,7 +12,10 @@ const SignUp = (props) => {
     let inPicture = null;
 
     const pictureHandler = (event) => {
-        inPicture = event.target.files[0];
+        if (event.target.files && event.target.files[0]) {
+            let img = event.target.files[0];
+            inPicture = URL.createObjectURL(img);
+        }
     }
 
     const isUsernameValide = (inUsername) => {
@@ -19,38 +24,61 @@ const SignUp = (props) => {
         else { return true; }
     }
 
+    const isPasswordValide = (inPassword) => {
+        if (inPassword === "" || inPassword === null) { return false; }
+        else { return true; }
+    }
+    const isPasswordEquals = (inPassword, verifyPassword) => {
+        return (inPassword === verifyPassword) ? true : false;
+    }
+
     const isNicknameValid = (inNickname) => {
         if (inNickname === "" || inNickname === null) { return false; }
         else { return true; }
     }
-    const isPasswordValide = (inPassword) => { }
-    const isPasswordEquals = (inPassword, verifyPassword) => { }
+
+    const isPictureValid = () => {
+        return (inPicture === null) ? false : true;
+    }
+
 
     const submitHendler = (event) => {
         event.preventDefault();
-        //verify uniqe username.
+        //Username validation.
         inUsername = document.getElementById("email").value;
         if (!isUsernameValide(inUsername)) {
             alert("Invalide Username !");
             return;
         }
-        //verify not empty.
+        //Password validation.
+        inPassword = document.getElementById("password").value;
+        if (!isPasswordValide(inPassword)) {
+            alert("Invalid Password !");
+            return;
+        }
+        //verify password==verifyPassword.
+        inVerifyPassword = document.getElementById("verifyPassword").value;
+        if (!isPasswordEquals(inPassword, inVerifyPassword)) {
+            alert("Passwords not equals !");
+            return;
+        }
+        //Nickname validation.
         inNickname = document.getElementById("nickname").value;
         if (!isNicknameValid(inNickname)) {
             alert("Invalide Nickname !");
             return;
         }
-        //verify password==verifyPassword.
-        inPassword = document.getElementById("password").value;
-        inVerifyPassword = document.getElementById("verifyPassword").value;
-        //if empty, set defualt.
-        // inPicture = document.getElementById("picture");
+        //Picture validation.
+        if (!isPictureValid()) {
+            alert("Invalid Picture !")
+            return;
+        }
 
         props.updateData.push({
             username: inUsername,
             password: inPassword,
             nickname: inNickname,
-            pic: "",
+            pic: inPicture,
             chats: []
         })
         props.setConnectedUsername(props.updateData.find(({ username }) => username === inUsername).username);
@@ -60,31 +88,47 @@ const SignUp = (props) => {
     return (
         <div className="outer">
             <div className="inner">
-                <form onSubmit={submitHendler}>
-                    <h3>Register</h3>
+                <Form onSubmit={submitHendler}>
+                    <h3>Sign Up</h3>
+                    <InputGroup className="mb-3">
+                        <InputGroup.Text>@</InputGroup.Text>
+                        <FormControl
+                            id="email"
+                            type="email"
+                            placeholder="Username" />
+                    </InputGroup>
+                    <InputGroup className="mb-3">
+                        <FormControl
+                            id="password"
+                            type="password"
+                            placeholder="Enter password" />
+                    </InputGroup>
 
-                    <div className="form-group">
-                        <label>Email</label>
-                        <input id="email" type="email" className="form-control" placeholder="Enter email" />
-                    </div>
+                    <InputGroup className="mb-3">
+                        <FormControl
+                            id="verifyPassword"
+                            type="password"
+                            placeholder="Verify password" />
+                    </InputGroup>
 
-                    <div className="form-group">
-                        <label>Nickname</label>
-                        <input id="nickname" type="text" className="form-control" placeholder="Nickname" />
-                    </div>
+                    <InputGroup className="mb-3">
+                        <FormControl
+                            id="nickname"
+                            type="text"
+                            placeholder="Nickname" />
+                    </InputGroup>
 
-                    <div className="form-group">
-                        <label>Picture</label>
-                        <input id="picture" type="file" className="form-control" placeholder="Picture" onChange={pictureHandler} />
-                    </div>
+                    <InputGroup className="mb-3">
+                        <InputGroup.Text>Picture:</InputGroup.Text>
+                        <FormControl
+                            id="picture"
+                            type="file"
+                            onChange={pictureHandler} />
 
-                    <div className="form-group">
-                        <label>Password</label>
-                        <input id="password" type="password" className="form-control" placeholder="Enter password" />
-                        <input id="verifyPassword" type="password" className="form-control" placeholder="Verify password" />
-                    </div>
-                    <button type="submit" className="btn btn-dark btn-lg btn-block">Register</button>
-                </form>
+                    </InputGroup>
+
+                    <Button type="submit" className="btn btn-dark btn-lg btn-block">Register</Button>
+                </Form>
             </div>
         </div>
     );
