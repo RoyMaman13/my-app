@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './ChatList.css'
 import ChatListItems from './ChatListItems'
 import { useState } from 'react'
@@ -11,33 +11,26 @@ const ChatList = (props) => {
     const handleShow = () => { setShow(true); }
     const handleClose = () => { setShow(false); }
 
-    const [chats, setChats] = useState(props.chats)
-
     const createNewChat = (event) => {
         event.preventDefault();
-        let updatedChats = [...chats];
-        updatedChats.push({
-            nickname: 'Yonatan',
-            pic: 'https://img.icons8.com/fluency/344/person-male.png',
-            messegeHistory: [
-                {
-                    from: '',
-                    messege: 'Hello',
-                    time: '16:00, 10/4/2022'
-                },
-                {
-                    from: 'other',
-                    messege: 'How are you ?',
-                    time: '16:10, 10/4/2022'
-                },
-                {
-                    from: '',
-                    messege: 'great',
-                    time: '16:11, 10/4/2022'
-                }
-            ]
+        let newContact = document.getElementById('newContact').value;
+        const found = props.updateData.find(({ username }) => username === newContact);
+        if (found === undefined) {
+            alert("Username does not exist!");
+            return;
+        }
+        if (props.chats.find(({ username }) => found.username === username) !== undefined) {
+            alert("Already exist !");
+            handleClose();
+            return;
+        }
+        props.chats.push({
+            username: found.username,
+            nickname: found.nickname,
+            pic: found.pic,
+            messegeHistory: []
         })
-        setChats(updatedChats);
+        handleClose();
     }
 
     return (
@@ -53,25 +46,23 @@ const ChatList = (props) => {
                     <Modal.Header closeButton>
                         <Modal.Title>Add new contact</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
-                        <Form>
-                            <Form.Group>
-                                <FloatingLabel label="Contact's Identifier">
-                                    <Form.Control placeholder="Contact's Identifier"></Form.Control>
-                                </FloatingLabel>
-                            </Form.Group>
-                        </Form>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                        <Button variant="primary" onClick={handleClose}>
-                            Add
-                        </Button>
-                    </Modal.Footer>
+                    <Form onSubmit={createNewChat}>
+                        <Modal.Body>
+                            <FloatingLabel label="Contact's Identifier">
+                                <Form.Control id='newContact' placeholder="Contact's Identifier" />
+                            </FloatingLabel>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={handleClose}>
+                                Close
+                            </Button>
+                            <Button variant="primary" onClick={createNewChat}>
+                                Add
+                            </Button>
+                        </Modal.Footer>
+                    </Form>
                 </Modal>
-                <ChatListItems chats={chats} />
+                <ChatListItems setActiveChatUsername={props.setActiveChatUsername} chats={props.chats} />
             </div>
         </div>
     )

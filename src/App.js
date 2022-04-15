@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { data } from './data';
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [connectedUsername, setConnectedUsername] = useState("");
   const [updateData, setData] = useState(data);
 
   return (
@@ -31,11 +31,10 @@ function App() {
           </div>
         </nav>
         <Routes>
-
-          <Route exact path='/' element={<Login setUser={setUser} updateData={updateData} />} />
-          <Route exact path="/sign-in" element={<Login setUser={setUser} updateData={updateData} />} />
-          <Route exact path="/sign-up" element={<SignUp setUser={setUser} updateData={updateData} setData={setData} />} />
-          <Route exact path="/chat-screen" element={<ChatScreen user={user} setData={setData} />} />
+          <Route exact path='/' element={<Login setConnectedUsername={setConnectedUsername} updateData={updateData} />} />
+          <Route exact path="/sign-in" element={<Login setConnectedUsername={setConnectedUsername} updateData={updateData} />} />
+          <Route exact path="/sign-up" element={<SignUp setConnectedUsername={setConnectedUsername} updateData={updateData} setData={setData} />} />
+          <Route exact path="/chat-screen" element={<ChatScreen user={updateData.find(({ username }) => username === connectedUsername)} updateData={updateData} />} />
         </Routes>
       </div>
 
