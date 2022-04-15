@@ -88,11 +88,15 @@
   padding: 1px;
 }
 .chat__item__content {
+  position:static;
   background-color: #4462ff;
+  margin-left:300px;
+  margin-block: 7px;
   color: #fff;
   padding: 5px;
   border-radius: 10px 10px 0 10px;
-  max-width: 50%;
+  margin-right: 80px;
+  max-width: 60%;
   min-width: 215px;
   border: 3px solid blue;
 }
@@ -100,8 +104,9 @@
   background-color: green;
   color: #fff;
   padding: 5px;
-  border-radius: 10px 10px 0 10px;
-  max-width: 50%;
+  border-radius: 10px 10px 0px 10px;
+  margin-block: 7px;
+  max-width: 60%;
   min-width: 215px;
   border: 3px solid gray;
 }
