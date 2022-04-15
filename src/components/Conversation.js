@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Conversation.css'
+import "./chatContent.css";
 import { Button, OverlayTrigger, Popover, Modal, Stack, Form } from 'react-bootstrap'
 
 let inMessage = null;
@@ -28,6 +29,18 @@ const Conversation = (props) => {
             from: '',
             messege: inMessage,
             time: '19:00'
+        })
+        setMessegesHistory(newMessage);
+    }
+    const uploadImage = (event) => {
+        event.preventDefault();
+        inPicture = URL.createObjectURL(selectedImage);
+        let newMessage = [...messegesHistory];
+        newMessage.push({
+            type: 'photo',
+            from: '',
+            messege: inPicture,
+            time: '2:00'
         })
         setMessegesHistory(newMessage);
     }
@@ -66,30 +79,68 @@ const Conversation = (props) => {
     return (
 
         <div className='conversation'>
+            <div className="conv_display">
+                {messegesHistory.map(({ type, from, messege, time }) => {
+                    let sender = (from !== '') ? chatWith : "Me";
+                    if (sender !== 'Me') {
+                        if (type == 'photo') {
+                            return (
+                                /*other picture*/
+                                <div className="chat__item__content">
+                                    <div className="chat__item-friend">
+                                        <div>
+                                            {sender + ':'}
+                                            <img src={messege} className="img" />
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        }
+                        else {
+                            return (
+                                /*other text*/
+                                <div className="chat__item__content">
+                                    <div className="chat__item-friend">
+                                        <div>
+                                            {sender + ": " + messege}
+                                        </div>
+                                    </div>
+                                </div>
 
-            {messegesHistory.map(({ type, from, messege, time }) => {
-                let sender = (from !== '') ? chatWith : "Me";
-                if (sender !== 'Me') {
-                    return (
-                        <div className="conv_display">
-                            <div>
-                                {sender + ": " + messege}
-                            </div>
-                        </div>
-                    );
-                }
-                else {
-                    return (
-                        <div className="conv_display">
-                            <div>
-                                {sender + ": " + messege}
-                            </div>
-                        </div>
-                    );
-                }
-            })
-            }
+                            );
+                        }
+                    }
+                    else {
+                        if (type == 'photo') {
+                            return (
+                                /*my picture*/
+                                <div className="chat__item__me">
+                                    <div className="chat__item">
+                                        <div>
+                                            {sender + ':'}
+                                            <img src={messege} className="img" />
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        }
+                        else {
+                            return (
+                                /*other texrt*/
+                                <div>
+                                    <div className="chat__item__me">
+                                        <div className="chat__item">
+                                            {sender + ": " + messege}
+                                        </div>
+                                    </div>
+                                </div>
 
+                            );
+                        }
+                    }
+                })
+                }
+            </div>
 
             {/* Modal (Popup screen) for attaching record. */}
             < Modal
@@ -122,11 +173,14 @@ const Conversation = (props) => {
                 </Modal.Header>
                 <Modal.Body >
                     <Form.Group className="mb-3">
-                        <Form.Control type="file" />
+                        <Form.Control type="file" accept="image/*" onChange={(event) => {
+                            console.log(event.target.files[0]);
+                            setSelectedImage(event.target.files[0]);
+                        }} />
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary">
+                    <Button variant="primary" onClick={uploadImage}>
                         Send
                     </Button>
                 </Modal.Footer>
