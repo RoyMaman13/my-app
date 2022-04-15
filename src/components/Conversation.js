@@ -2,16 +2,22 @@ import React, { useState } from 'react'
 import './Conversation.css'
 import "./chatContent.css";
 import { Button, OverlayTrigger, Popover, Modal, Stack, Form } from 'react-bootstrap'
+import useRecorder from './useRecorder'
 
 let inMessage = null;
 let inPicture = null;
+let inVideo = null;
+let inRecord = null;
+
 
 const Conversation = (props) => {
+    let [audioURL, isRecording, startRecording, stopRecording] = useRecorder();
     let Messeges = props.user.chats[0];
     let chatWith = props.user.chats[0].nickname;
 
     const [messegesHistory, setMessegesHistory] = useState(Messeges.messegeHistory)
     const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedVideo, setSelectedVideo] = useState(null);
 
 
     const [showAttach, setShowAttach] = useState(false);
@@ -43,6 +49,33 @@ const Conversation = (props) => {
             time: '2:00'
         })
         setMessegesHistory(newMessage);
+        setShowAttachImg(false);
+    }
+    const uploadVideo = (event) => {
+        event.preventDefault();
+        inVideo = URL.createObjectURL(selectedVideo);
+        let newMessage = [...messegesHistory];
+        newMessage.push({
+            type: 'video',
+            from: '',
+            messege: inVideo,
+            time: '2:00'
+        })
+        setMessegesHistory(newMessage);
+        setShowAttachVideo(false);
+    }
+    const uploadRecord = (event) => {
+        event.preventDefault();
+        inRecord = audioURL;
+        let newMessage = [...messegesHistory];
+        newMessage.push({
+            type: 'audio',
+            from: '',
+            messege: inRecord,
+            time: '2:00'
+        })
+        setMessegesHistory(newMessage);
+        setShowAttachRecord(false);
     }
 
 
@@ -96,6 +129,34 @@ const Conversation = (props) => {
                                 </div>
                             );
                         }
+                        else if (type == 'video') {
+                            return (
+                                /*other video*/
+                                <div className="chat__item__content">
+                                    <div className="chat__item-friend">
+                                        <div>
+                                            {sender + ':'}
+                                            <video width="360" height="250" controls>
+                                                <source src={messege} type="video/mp4"></source>
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        }
+                        else if (type == 'audio') {
+                            return (
+                                /*my audio*/
+                                <div className="chat__item__content">
+                                    <div className="chat__item-friend">
+                                        <div>
+                                            {sender + ':'}
+                                            <audio src={messege} controls> </audio>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        }
                         else {
                             return (
                                 /*other text*/
@@ -119,6 +180,35 @@ const Conversation = (props) => {
                                         <div>
                                             {sender + ':'}
                                             <img src={messege} className="img" />
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        }
+                        else if (type == 'video') {
+                            return (
+                                /*my video*/
+                                <div className="chat__item__me">
+                                    <div className="chat__item">
+                                        <div>
+                                            {sender + ':'}
+                                            <video width="360" height="250" controls>
+                                                <source src={messege} type="video/mp4"></source>
+                                            </video>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        }
+                        else if (type == 'audio') {
+                            return (
+                                /*my audio*/
+                                <div className="chat__item__me">
+                                    <div className="chat__item">
+                                        <div>
+                                            {sender + ':'}
+                                            <audio src={messege} controls> </audio>
                                         </div>
                                     </div>
                                 </div>
@@ -154,9 +244,10 @@ const Conversation = (props) => {
                 </Modal.Header>
                 <Modal.Body >
                     <Stack direction="horizontal" className='col-md-5 mx-auto' gap={3}>
-                        <Button variant="secondary">Start</Button>
+                        <Button variant="secondary" onClick={startRecording} disabled={isRecording}>Start</Button>
+                        <Button variant="secondary" onClick={stopRecording} disabled={!isRecording}>stop</Button>
                         <div className="vr" />
-                        <Button variant="secondary">Send</Button>
+                        <Button variant="secondary" onClick={uploadRecord}>Send</Button>
                     </Stack>
                 </Modal.Body>
             </Modal>
@@ -199,11 +290,14 @@ const Conversation = (props) => {
                     </Modal.Header>
                     <Modal.Body >
                         <Form.Group className="mb-3">
-                            <Form.Control type="file" />
+                            <Form.Control type="file" accept="video/*" onChange={(event) => {
+                                console.log(event.target.files[0]);
+                                setSelectedVideo(event.target.files[0]);
+                            }} />
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="primary">
+                        <Button variant="primary" onClick={uploadVideo}>
                             Send
                         </Button>
                     </Modal.Footer>
