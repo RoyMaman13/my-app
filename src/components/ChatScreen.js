@@ -17,7 +17,7 @@ const ChatScreen = (props) => {
                 </div>
 
                 {/* {(activeChatUsername === null) ? "" : <MessageScreen chats={props.user.chats.find(({ username }) => activeChatUsername === username)} user={props.user} />} */}
-                {(activeChatUsername === null) ? "" : <Conversation user={props.user} />}
+                {(activeChatUsername === null) ? "" : <Conversation user={props.user} chats={props.user.chats.find(({ username }) => activeChatUsername === username)} />}
 
             </div >
         </div >
