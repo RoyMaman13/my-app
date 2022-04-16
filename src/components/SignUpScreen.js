@@ -123,6 +123,7 @@ const SignUp = (props) => {
                         <FormControl
                             id="picture"
                             type="file"
+                            accept="image/*"
                             onChange={pictureHandler} />
 
                     </InputGroup>

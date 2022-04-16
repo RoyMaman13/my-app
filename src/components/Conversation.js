@@ -12,8 +12,8 @@ let inRecord = null;
 
 const Conversation = (props) => {
     let [audioURL, isRecording, startRecording, stopRecording] = useRecorder();
-    let Messeges = props.user.chats[props.chats.id];
-    let chatWith = props.user.chats[props.chats.id].nickname;
+    let Messeges = props.user.chats[0];
+    let chatWith = props.user.chats[0].nickname;
 
     const [messegesHistory, setMessegesHistory] = useState(Messeges.messegeHistory)
     const [selectedImage, setSelectedImage] = useState(null);
