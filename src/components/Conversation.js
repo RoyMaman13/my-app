@@ -17,7 +17,6 @@ const Conversation = (props) => {
     let Messeges = props.chats;
     let chatWith = props.chats.nickname;
 
-    const [messegesHistory, setMessegesHistory] = useState(Messeges.messegeHistory)
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedVideo, setSelectedVideo] = useState(null);
 
@@ -31,7 +30,6 @@ const Conversation = (props) => {
         event.preventDefault();
         inMessage = document.getElementById("newMessage").value;
         document.getElementById("newMessage").value = '';
-        // let newMessage = [...messegesHistory];
         Messeges.messegeHistory.push({
             type: 'text',
             from: '',
@@ -43,41 +41,38 @@ const Conversation = (props) => {
     const uploadImage = (event) => {
         event.preventDefault();
         inPicture = URL.createObjectURL(selectedImage);
-        let newMessage = [...messegesHistory];
         Messeges.messegeHistory.push({
             type: 'photo',
             from: '',
             messege: inPicture,
             time: currentTime
         })
-        setMessegesHistory(newMessage);
+        props.setRender({});
         setShowAttachImg(false);
     }
     const uploadVideo = (event) => {
         event.preventDefault();
         inVideo = URL.createObjectURL(selectedVideo);
-        let newMessage = [...messegesHistory];
         Messeges.messegeHistory.push({
             type: 'video',
             from: '',
             messege: inVideo,
             time: currentTime
         })
-        setMessegesHistory(newMessage);
         setShowAttachVideo(false);
+        props.setRender({});
     }
     const uploadRecord = (event) => {
         event.preventDefault();
         inRecord = audioURL;
-        let newMessage = [...messegesHistory];
         Messeges.messegeHistory.push({
             type: 'audio',
             from: '',
             messege: inRecord,
             time: '2:00'
         })
-        setMessegesHistory(newMessage);
         setShowAttachRecord(false);
+        props.setRender({});
     }
 
 

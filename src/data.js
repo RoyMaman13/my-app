@@ -49,16 +49,19 @@ export const data =
                     pic: 'https://img.icons8.com/officel/452/person-male.png',
                     messegeHistory: [
                         {
+                            type: 'text',
                             from: '',
                             messege: 'Hello',
                             time: '16:00, 10/4/2022'
                         },
                         {
+                            type: 'text',
                             from: 'other',
                             messege: 'How are you ?',
                             time: '16:10, 10/4/2022'
                         },
                         {
+                            type: 'text',
                             from: '',
                             messege: 'good',
                             time: '16:11, 10/4/2022'
@@ -78,7 +81,8 @@ export const data =
             username: 'yonatan@gmail.com',
             password: '12345',
             nickname: 'yonatan',
-            pic: 'https://cdn-icons.flaticon.com/png/512/4140/premium/4140037.png?token=exp=1649582726~hmac=a36aa5ea446198f6b35194b7de24e040'
+            pic: 'https://cdn-icons.flaticon.com/png/512/4140/premium/4140037.png?token=exp=1649582726~hmac=a36aa5ea446198f6b35194b7de24e040',
+            chats: []
         },
         {
             username: 'roy@gmail.com',

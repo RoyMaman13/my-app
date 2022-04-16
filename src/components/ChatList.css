@@ -96,7 +96,8 @@
 .chatlist_item .chat_info{
     display: inline-block;
     margin: 0px;;
-        width: 100%;
+    width: 100%;
+    /* overflow-x:visible; */
 }
 .chatlist_item .chat_info .chat_meta{
     width: 100%;
@@ -122,4 +123,10 @@ margin-left: auto;
     100% {
         transform: scale(1);
     }
+}
+
+.chat_msg audio {
+    margin: 5px;
+    width: 20vh;
+    height: 30px;
 }
