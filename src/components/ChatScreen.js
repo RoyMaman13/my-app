@@ -9,6 +9,8 @@ import Conversation from './Conversation'
 const ChatScreen = (props) => {
 
     const [activeChatUsername, setActiveChatUsername] = useState(null);
+    const [render, setRender] = useState(null);
+
     return (
         <div className='container outer inner-chat '>
             <div className='wrapper'>
@@ -17,7 +19,7 @@ const ChatScreen = (props) => {
                 </div>
 
                 {/* {(activeChatUsername === null) ? "" : <MessageScreen chats={props.user.chats.find(({ username }) => activeChatUsername === username)} user={props.user} />} */}
-                {(activeChatUsername === null) ? "" : <Conversation user={props.user} chats={props.user.chats.find(({ username }) => activeChatUsername === username)} />}
+                {(activeChatUsername === null) ? "" : <Conversation setRender={setRender} chats={props.user.chats.find(({ username }) => activeChatUsername === username)} user={props.user} />}
 
             </div >
         </div >
