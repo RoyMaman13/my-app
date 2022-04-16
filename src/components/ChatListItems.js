@@ -7,7 +7,7 @@ const ChatListItems = (props) => {
             {props.chats.map(({ username, nickname, pic, messegeHistory }) => {
                 let lastMessegeIndex = messegeHistory.length - 1;
                 return (
-                    <button onClick={() => alert(nickname)} key={username}>
+                    <button onClick={() => props.setActiveChatUsername(username)} key={username}>
                         <div className="chatlist_item">
                             <img src={pic} alt="#" />
                             <span className='chat_info'>
