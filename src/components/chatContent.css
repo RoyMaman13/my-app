@@ -231,3 +231,10 @@
   max-width: 100%;
   height: auto;
 }
+.timeShow {
+  position:sticky;
+  font-size: 14px;
+  color: black;  
+  font-family: courier,
+  monospace, ;
+  }

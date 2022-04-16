@@ -11,6 +11,8 @@ let inRecord = null;
 
 
 const Conversation = (props) => {
+    var today = new Date();
+    var currentTime = today.getHours() + ":" + today.getMinutes();
     let [audioURL, isRecording, startRecording, stopRecording] = useRecorder();
     let Messeges = props.chats;
     let chatWith = props.chats.nickname;
@@ -34,7 +36,7 @@ const Conversation = (props) => {
             type: 'text',
             from: '',
             messege: inMessage,
-            time: '19:00'
+            time: currentTime
         })
         props.setRender({});
     }
@@ -46,7 +48,7 @@ const Conversation = (props) => {
             type: 'photo',
             from: '',
             messege: inPicture,
-            time: '2:00'
+            time: currentTime
         })
         setMessegesHistory(newMessage);
         setShowAttachImg(false);
@@ -59,7 +61,7 @@ const Conversation = (props) => {
             type: 'video',
             from: '',
             messege: inVideo,
-            time: '2:00'
+            time: currentTime
         })
         setMessegesHistory(newMessage);
         setShowAttachVideo(false);
@@ -124,6 +126,7 @@ const Conversation = (props) => {
                                         <div>
                                             {sender + ':'}
                                             <img src={messege} className="img" />
+                                            <div className='timeShow'>{time}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -138,6 +141,7 @@ const Conversation = (props) => {
                                             {sender + ':'}
                                             <video width="360" height="250" controls>
                                                 <source src={messege} type="video/mp4"></source>
+                                                <div className='timeShow'>{time}</div>
                                             </video>
                                         </div>
                                     </div>
@@ -152,6 +156,7 @@ const Conversation = (props) => {
                                         <div>
                                             {sender + ':'}
                                             <audio src={messege} controls> </audio>
+                                            <div className='timeShow'>{time}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -164,6 +169,7 @@ const Conversation = (props) => {
                                     <div className="chat__item-friend">
                                         <div>
                                             {sender + ": " + messege}
+                                            <div className='timeShow'>{time}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -180,6 +186,7 @@ const Conversation = (props) => {
                                         <div>
                                             {sender + ':'}
                                             <img src={messege} className="img" />
+                                            <div className='timeShow'>{time}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -194,6 +201,7 @@ const Conversation = (props) => {
                                             {sender + ':'}
                                             <video width="360" height="250" controls>
                                                 <source src={messege} type="video/mp4"></source>
+                                                <div className='timeShow'>{time}</div>
                                             </video>
 
                                         </div>
@@ -209,6 +217,7 @@ const Conversation = (props) => {
                                         <div>
                                             {sender + ':'}
                                             <audio src={messege} controls> </audio>
+                                            <div className='timeShow'>{time}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -221,6 +230,7 @@ const Conversation = (props) => {
                                     <div className="chat__item__me">
                                         <div className="chat__item">
                                             {sender + ": " + messege}
+                                            <div className='timeShow'>{time}</div>
                                         </div>
                                     </div>
                                 </div>
