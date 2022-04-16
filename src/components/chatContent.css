@@ -103,9 +103,9 @@
 }
 
 .chat__item__content {
-  position:static;
+  position: static;
   background-color: #4462ff;
-  margin-left:300px;
+  margin-left: 300px;
   margin-block: 7px;
   color: #fff;
   padding: 5px;

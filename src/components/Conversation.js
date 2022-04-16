@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Conversation.css'
 import "./chatContent.css";
 import { Button, OverlayTrigger, Popover, Modal, Stack, Form } from 'react-bootstrap'
 import useRecorder from './useRecorder'
+import { render } from '@testing-library/react';
 
 let inMessage = null;
 let inPicture = null;
@@ -13,9 +14,16 @@ let inRecord = null;
 const Conversation = (props) => {
     var today = new Date();
     var currentTime = today.getHours() + ":" + today.getMinutes();
+
     let [audioURL, isRecording, startRecording, stopRecording] = useRecorder();
     let Messeges = props.chats;
     let chatWith = props.chats.nickname;
+
+
+    const scrollToBottom = () => {
+        const element = document.getElementById("conversation_display");
+        element.scrollTop = element.scrollHeight;
+    }
 
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedVideo, setSelectedVideo] = useState(null);
@@ -30,6 +38,7 @@ const Conversation = (props) => {
         event.preventDefault();
         inMessage = document.getElementById("newMessage").value;
         document.getElementById("newMessage").value = '';
+        // let newMessage = [...messegesHistory];
         Messeges.messegeHistory.push({
             type: 'text',
             from: '',
@@ -37,6 +46,7 @@ const Conversation = (props) => {
             time: currentTime
         })
         props.setRender({});
+
     }
     const uploadImage = (event) => {
         event.preventDefault();
@@ -69,7 +79,7 @@ const Conversation = (props) => {
             type: 'audio',
             from: '',
             messege: inRecord,
-            time: '2:00'
+            time: currentTime
         })
         setShowAttachRecord(false);
         props.setRender({});
@@ -109,7 +119,8 @@ const Conversation = (props) => {
     return (
 
         <div className='conversation'>
-            <div className="conv_display">
+            <div className="conv_display" id="conversation_display">
+
                 {Messeges.messegeHistory.map(({ type, from, messege, time }) => {
                     let sender = (from !== '') ? chatWith : "Me";
                     if (sender !== 'Me') {
@@ -182,6 +193,7 @@ const Conversation = (props) => {
                                             {sender + ':'}
                                             <img src={messege} className="img" />
                                             <div className='timeShow'>{time}</div>
+                                            <div ref={scrollToBottom}></div>
                                         </div>
                                     </div>
                                 </div>
@@ -197,6 +209,7 @@ const Conversation = (props) => {
                                             <video width="360" height="250" controls>
                                                 <source src={messege} type="video/mp4"></source>
                                                 <div className='timeShow'>{time}</div>
+                                                <div ref={scrollToBottom}></div>
                                             </video>
 
                                         </div>
@@ -213,6 +226,7 @@ const Conversation = (props) => {
                                             {sender + ':'}
                                             <audio src={messege} controls> </audio>
                                             <div className='timeShow'>{time}</div>
+                                            {/* <div ref={scrollToBottom}></div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -220,12 +234,13 @@ const Conversation = (props) => {
                         }
                         else {
                             return (
-                                /*other texrt*/
+                                /*my text*/
                                 <div>
                                     <div className="chat__item__me">
                                         <div className="chat__item">
                                             {sender + ": " + messege}
                                             <div className='timeShow'>{time}</div>
+                                            {/* <div ref={scrollToBottom}></div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -236,6 +251,8 @@ const Conversation = (props) => {
                 })
                 }
             </div>
+            <div ref={scrollToBottom}></div>
+
 
             {/* Modal (Popup screen) for attaching record. */}
             < Modal
