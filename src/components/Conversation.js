@@ -3,6 +3,7 @@ import './Conversation.css'
 import "./chatContent.css";
 import { Button, OverlayTrigger, Popover, Modal, Stack, Form } from 'react-bootstrap'
 import useRecorder from './useRecorder'
+import { render } from '@testing-library/react';
 
 let inMessage = null;
 let inPicture = null;
@@ -12,8 +13,8 @@ let inRecord = null;
 
 const Conversation = (props) => {
     let [audioURL, isRecording, startRecording, stopRecording] = useRecorder();
-    let Messeges = props.user.chats[0];
-    let chatWith = props.user.chats[0].nickname;
+    let Messeges = props.chats;
+    let chatWith = props.chats.nickname;
 
     const [messegesHistory, setMessegesHistory] = useState(Messeges.messegeHistory)
     const [selectedImage, setSelectedImage] = useState(null);
@@ -29,20 +30,20 @@ const Conversation = (props) => {
         event.preventDefault();
         inMessage = document.getElementById("newMessage").value;
         document.getElementById("newMessage").value = '';
-        let newMessage = [...messegesHistory];
-        newMessage.push({
+        // let newMessage = [...messegesHistory];
+        Messeges.messegeHistory.push({
             type: 'text',
             from: '',
             messege: inMessage,
             time: '19:00'
         })
-        setMessegesHistory(newMessage);
+        props.setRender({});
     }
     const uploadImage = (event) => {
         event.preventDefault();
         inPicture = URL.createObjectURL(selectedImage);
         let newMessage = [...messegesHistory];
-        newMessage.push({
+        Messeges.messegeHistory.push({
             type: 'photo',
             from: '',
             messege: inPicture,
@@ -55,7 +56,7 @@ const Conversation = (props) => {
         event.preventDefault();
         inVideo = URL.createObjectURL(selectedVideo);
         let newMessage = [...messegesHistory];
-        newMessage.push({
+        Messeges.messegeHistory.push({
             type: 'video',
             from: '',
             messege: inVideo,
@@ -68,7 +69,7 @@ const Conversation = (props) => {
         event.preventDefault();
         inRecord = audioURL;
         let newMessage = [...messegesHistory];
-        newMessage.push({
+        Messeges.messegeHistory.push({
             type: 'audio',
             from: '',
             messege: inRecord,
@@ -113,7 +114,7 @@ const Conversation = (props) => {
 
         <div className='conversation'>
             <div className="conv_display">
-                {messegesHistory.map(({ type, from, messege, time }) => {
+                {Messeges.messegeHistory.map(({ type, from, messege, time }) => {
                     let sender = (from !== '') ? chatWith : "Me";
                     if (sender !== 'Me') {
                         if (type == 'photo') {
@@ -304,16 +305,18 @@ const Conversation = (props) => {
                 </Modal>
 
                 <div className='conv_footer'>
-                    <Stack direction="horizontal" gap={3}>
-                        <Form.Control className="me-auto" id="newMessage" placeholder="Enter your messege..." />
-                        <OverlayTrigger show={showAttach} placement='top-start' overlay={popover}>
-                            <Button variant='' onClick={() => setShowAttach(true)}>
-                                <img className='attachIcon' src="attachIcon.png" alt="#" height='30' />
-                            </Button>
-                        </OverlayTrigger>
-                        <div className="vr" />
-                        <Button variant="secondary" onClick={SendMessage}>Submit</Button>
-                    </Stack>
+                    <form onSubmit={SendMessage}>
+                        <Stack direction="horizontal" gap={3}>
+                            <Form.Control className="me-auto" id="newMessage" placeholder="Enter your messege..." />
+                            <OverlayTrigger show={showAttach} placement='top-start' overlay={popover}>
+                                <Button variant='' onClick={() => setShowAttach(true)}>
+                                    <img className='attachIcon' src="attachIcon.png" alt="#" height='30' />
+                                </Button>
+                            </OverlayTrigger>
+                            <div className="vr" />
+                            <Button variant="secondary" onClick={SendMessage}>Send</Button>
+                        </Stack>
+                    </form>
                 </div>
             </>
         </div >
