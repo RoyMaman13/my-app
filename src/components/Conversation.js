@@ -3,7 +3,6 @@ import './Conversation.css'
 import "./chatContent.css";
 import { Button, OverlayTrigger, Popover, Modal, Stack, Form } from 'react-bootstrap'
 import useRecorder from './useRecorder'
-import { render } from '@testing-library/react';
 
 let inMessage = null;
 let inPicture = null;

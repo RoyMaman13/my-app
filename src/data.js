@@ -7,6 +7,7 @@ export const data =
             pic: 'https://cdn-icons.flaticon.com/png/512/4140/premium/4140037.png?token=exp=1649582726~hmac=a36aa5ea446198f6b35194b7de24e040',
             chats: [
                 {
+                    id: '0',
                     username: 'yonatan@gmail.com',
                     nickname: 'Yonatan',
                     pic: 'https://img.icons8.com/fluency/344/person-male.png',
@@ -44,6 +45,7 @@ export const data =
                     ]
                 },
                 {
+                    id: '1',
                     username: 'roy@gmail.com',
                     nickname: 'Roy',
                     pic: 'https://img.icons8.com/officel/452/person-male.png',
@@ -66,6 +68,7 @@ export const data =
                     ]
                 },
                 {
+                    id: '2',
                     username: 'Neta@gmail.com',
                     nickname: 'Neta',
                     pic: 'https://img.icons8.com/officel/452/person-male.png',

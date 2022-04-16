@@ -1,4 +1,6 @@
+import { render } from '@testing-library/react';
 import React, { useState } from 'react'
+import ReactDOM from "react-dom";
 import "./chatContent.css";
 
 
@@ -10,8 +12,8 @@ let inPicture = null;
 
 export const MessageScreen = (props) => {
 
-    let Messeges = props.chats;
-    let chatWith = props.chats.nickname;
+    let Messeges = props.user.chats[0];
+    let chatWith = props.user.chats[0].nickname;
 
     const [messegesHistory, setMessegesHistory] = useState(Messeges.messegeHistory)
     const [selectedImage, setSelectedImage] = useState(null);
@@ -20,33 +22,33 @@ export const MessageScreen = (props) => {
         event.preventDefault();
         inMessage = document.getElementById("newMessage").value;
         document.getElementById("newMessage").value = '';
-        // let newMessage = [...messegesHistory];
-        Messeges.messegeHistory.push({
+        let newMessage = [...messegesHistory];
+        newMessage.push({
             type: 'text',
             from: '',
             messege: inMessage,
             time: '19:00'
         })
-        // setMessegesHistory(newMessage);
+        setMessegesHistory(newMessage);
     }
     const uploadImage = (event) => {
         event.preventDefault();
         inPicture = URL.createObjectURL(selectedImage);
-        // let newMessage = [...messegesHistory];
-        Messeges.messegeHistory.push({
+        let newMessage = [...messegesHistory];
+        newMessage.push({
             type: 'photo',
             from: '',
             messege: inPicture,
             time: '2:00'
         })
-        // setMessegesHistory(newMessage);
+        setMessegesHistory(newMessage);
     }
 
     return (
         <form onSubmit={SendMessage}>
             <div>
                 <span className='conversation'>
-                    {Messeges.messegeHistory.map(({ type, from, messege, time }) => {
+                    {messegesHistory.map(({ type, from, messege, time }) => {
                         let sender = (from !== '') ? chatWith : "Me";
                         if (sender !== 'Me') {
                             if (type == 'photo') {
