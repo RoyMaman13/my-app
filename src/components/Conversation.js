@@ -196,6 +196,7 @@ const Conversation = (props) => {
                                             {sender + ':'}
                                             <img src={messege} className="img" />
                                             <div className='timeShow'>{time}</div>
+                                            <div ref={scrollToBottom}></div>
                                         </div>
                                     </div>
                                 </div>
