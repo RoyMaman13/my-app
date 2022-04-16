@@ -13,11 +13,16 @@ let inRecord = null;
 
 const Conversation = (props) => {
     var today = new Date();
-    var currentTime = today.getHours() + ":" + today.getMinutes();
+    var currentTime = addZero(today.getHours()) + ":" + addZero(today.getMinutes());
 
     let [audioURL, isRecording, startRecording, stopRecording] = useRecorder();
     let Messeges = props.chats;
     let chatWith = props.chats.nickname;
+
+    function addZero(i) {
+        if (i < 10) { i = "0" + i }
+        return i;
+    }
 
 
     const scrollToBottom = () => {
