@@ -24,7 +24,6 @@ const Conversation = (props) => {
         return i;
     }
 
-
     const scrollToBottom = () => {
         const element = document.getElementById("conversation_display");
         element.scrollTop = element.scrollHeight;
