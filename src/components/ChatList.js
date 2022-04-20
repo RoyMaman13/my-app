@@ -39,7 +39,7 @@ const ChatList = (props) => {
                 <img src={props.user.pic} alt="#" />
                 {props.user.nickname}
                 <button className='popup' variant="" onClick={handleShow}>
-                    <img src="https://cdn-icons.flaticon.com/png/512/2076/premium/2076218.png?token=exp=1649585401~hmac=9644db6aef7f660f9b0e69e9f3353a80" alt="#" />
+                    <img src="newChat.png" alt="#" />
                 </button>
 
                 <Modal show={show} onHide={handleClose}>

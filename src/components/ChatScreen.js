@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './ChatScreen.css'
 import ChatList from './ChatList'
-import MessageScreen from './MessageScreen'
 import { useState } from 'react'
 import Conversation from './Conversation'
 
