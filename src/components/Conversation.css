@@ -13,6 +13,9 @@
     overflow: auto;
 }
 
+.conversation .conv_display audio{
+    width: 100%;
+}
 .conversation .conv_footer{
     display:block;
     text-align: center;

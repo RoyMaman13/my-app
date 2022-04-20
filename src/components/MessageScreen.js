@@ -2,8 +2,7 @@ import { render } from '@testing-library/react';
 import React, { useState } from 'react'
 import ReactDOM from "react-dom";
 import "./chatContent.css";
-import Axios from "axios"
-import axios from 'axios';
+
 
 
 

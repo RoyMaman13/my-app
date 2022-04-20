@@ -2,6 +2,23 @@ import React from 'react'
 
 const ChatListItems = (props) => {
 
+    const printLastMessage = (msg) => {
+        if (msg.type === 'text') {
+            return (<span>{msg.messege}</span>)
+        }
+        else if (msg.type === 'photo') {
+            return (<img src={msg.messege} />)
+        }
+        else if (msg.type === 'video') {
+            return (<video width="50" height="50" controls>
+                <source src={msg.messege} type="video/mp4" />
+            </video>)
+        }
+        else {
+            return (<audio src={msg.messege} controls > </audio>)
+        }
+    }
+
     return (
         <div className='chatlist_items'>
             {props.chats.map(({ username, nickname, pic, messegeHistory }) => {
@@ -18,7 +35,8 @@ const ChatListItems = (props) => {
                                     </span>
                                 </span>
                                 <span className='chat_msg'>
-                                    {(messegeHistory.length > 0) ? messegeHistory[lastMessegeIndex].messege : ""}
+                                    {(messegeHistory.length > 0) ? printLastMessage(messegeHistory[lastMessegeIndex]) : ""}
+                                    {/* {(messegeHistory.length > 0) ? messegeHistory[lastMessegeIndex].messege : ""} */}
                                 </span>
                             </span>
                         </div>
