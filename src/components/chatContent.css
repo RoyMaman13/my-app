@@ -215,18 +215,6 @@
   color: #fff;
 }
 
-.conversation {
-  margin-top: 0px;
-  overflow: auto;
-  min-height: 80vh;
-  max-height: 80vh;
-  font-size: medium;
-  display: grid;
-  grid-column: auto;
-  /* scroll-behavior:auto; */
-  border: 5px solid black;
-}
-
 .img {
   max-width: 100%;
   height: auto;
