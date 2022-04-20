@@ -37,9 +37,9 @@
 }
 
 .chat__item-friend {
-  display: flex;
+  display: block;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: flex-start;
   margin-bottom: 15px;
   transition: all 0.3s ease;
   transform: scale(0);

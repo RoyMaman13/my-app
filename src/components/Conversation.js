@@ -130,6 +130,7 @@ const Conversation = (props) => {
                                     <div className="chat__item-friend">
                                         <div>
                                             {sender + ':'}
+                                            <br />
                                             <img src={messege} className="img" alt='#' />
                                             <div className='timeShow'>{time}</div>
                                         </div>
@@ -144,6 +145,7 @@ const Conversation = (props) => {
                                     <div className="chat__item-friend">
                                         <div>
                                             {sender + ':'}
+                                            <br />
                                             <video width="360" height="250" controls>
                                                 <source src={messege} type="video/mp4"></source>
                                                 <div className='timeShow'>{time}</div>
@@ -160,6 +162,7 @@ const Conversation = (props) => {
                                     <div className="chat__item-friend">
                                         <div>
                                             {sender + ':'}
+                                            <br />
                                             <audio src={messege} controls> </audio>
                                             <div className='timeShow'>{time}</div>
                                         </div>
@@ -173,7 +176,9 @@ const Conversation = (props) => {
                                 <div className="chat__item__content">
                                     <div className="chat__item-friend">
                                         <div>
-                                            {sender + ": " + messege}
+                                            {sender + ": "}
+                                            <br />
+                                            {messege}
                                             <div className='timeShow'>{time}</div>
                                         </div>
                                     </div>
@@ -190,9 +195,9 @@ const Conversation = (props) => {
                                     <div className="chat__item">
                                         <div>
                                             {sender + ':'}
+                                            <br />
                                             <img src={messege} className="img" alt='#' />
                                             <div className='timeShow'>{time}</div>
-                                            {/* <div ref={scrollToBottom}></div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -205,10 +210,10 @@ const Conversation = (props) => {
                                     <div className="chat__item">
                                         <div>
                                             {sender + ':'}
+                                            <br />
                                             <video width="360" height="250" controls>
                                                 <source src={messege} type="video/mp4"></source>
                                                 <div className='timeShow'>{time}</div>
-                                                {/* <div ref={scrollToBottom}></div> */}
                                             </video>
 
                                         </div>
@@ -223,9 +228,9 @@ const Conversation = (props) => {
                                     <div className="chat__item">
                                         <div>
                                             {sender + ':'}
+                                            <br />
                                             <audio src={messege} controls> </audio>
                                             <div className='timeShow'>{time}</div>
-                                            {/* <div ref={scrollToBottom}></div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -237,9 +242,10 @@ const Conversation = (props) => {
                                 <div>
                                     <div className="chat__item__me">
                                         <div className="chat__item">
-                                            {sender + ": " + messege}
+                                            {sender + ": "}
+                                            <br />
+                                            {messege}
                                             <div className='timeShow'>{time}</div>
-                                            {/* <div ref={scrollToBottom}></div> */}
                                         </div>
                                     </div>
                                 </div>
