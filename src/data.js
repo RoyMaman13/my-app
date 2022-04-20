@@ -50,7 +50,7 @@ export const data =
                         {
                             type: 'audio',
                             from: 'other',
-                            messege: 'audio.wav',
+                            messege: 'Amir benayoun.mp3',
                             time: '16:20, 10/4/2022'
                         },
 
@@ -59,33 +59,132 @@ export const data =
                 {
                     username: 'roy@gmail.com',
                     nickname: 'Roy',
-                    pic: 'https://img.icons8.com/officel/452/person-male.png',
+                    pic: 'defualtIcon1.png',
                     messegeHistory: [
                         {
                             type: 'text',
                             from: '',
-                            messege: 'Hello',
+                            messege: 'ma kore ?',
                             time: '16:00, 10/4/2022'
                         },
                         {
-                            type: 'text',
+                            type: 'audio',
                             from: 'other',
-                            messege: 'How are you ?',
+                            messege: 'Amir benayoun.mp3',
                             time: '16:10, 10/4/2022'
                         },
                         {
-                            type: 'text',
+                            type: 'photo',
                             from: '',
-                            messege: 'good',
+                            messege: 'defualtIcon3.png',
                             time: '16:11, 10/4/2022'
-                        }
+                        },
+                        {
+                            type: 'video',
+                            from: 'other',
+                            messege: 'video.mp4',
+                            time: '16:11, 10/4/2022'
+                        },
                     ]
                 },
                 {
                     username: 'Neta@gmail.com',
                     nickname: 'Neta',
-                    pic: 'https://img.icons8.com/officel/452/person-male.png',
-                    messegeHistory: []
+                    pic: 'defualtIcon4.png',
+                    messegeHistory: [
+                        {
+                            type: 'audio',
+                            from: '',
+                            messege: 'audio.wav',
+                            time: '14:00, 10/4/2022'
+                        },
+                        {
+                            type: 'text',
+                            from: 'other',
+                            messege: 'Sounds good !',
+                            time: '16:12, 10/4/2022'
+                        },
+                        {
+                            type: 'video',
+                            from: '',
+                            messege: 'video.mp4',
+                            time: '16:15, 10/4/2022'
+                        },
+                        {
+                            type: 'photo',
+                            from: '',
+                            messege: 'photo.jpg',
+                            time: '16:17, 10/4/2022'
+                        }
+                    ]
+                },
+                {
+                    username: 'Biba@gmail.com',
+                    nickname: 'Biba',
+                    pic: 'defualtIcon3.png',
+                    messegeHistory: [
+                        {
+                            type: 'audio',
+                            from: 'other',
+                            messege: 'audio2.wav',
+                            time: '14:14, 10/4/2022'
+                        },
+                        {
+                            type: 'text',
+                            from: 'other',
+                            messege: 'Sounds angry..',
+                            time: '16:12, 10/4/2022'
+                        },
+                        {
+                            type: 'video',
+                            from: '',
+                            messege: 'video.mp4',
+                            time: '16:15, 10/4/2022'
+                        },
+                        {
+                            type: 'text',
+                            from: '',
+                            messege: 'welcome home',
+                            time: '16:17, 10/4/2022'
+                        }
+                    ]
+                },
+                {
+                    username: 'Orian@gmail.com',
+                    nickname: 'Orian',
+                    pic: 'defualtIcon4.png',
+                    messegeHistory: [
+                        {
+                            type: 'text',
+                            from: 'other',
+                            messege: 'Let go',
+                            time: '14:14, 10/4/2022'
+                        },
+                        {
+                            type: 'text',
+                            from: '',
+                            messege: 'im tired',
+                            time: '16:12, 10/4/2022'
+                        },
+                        {
+                            type: 'video',
+                            from: '',
+                            messege: 'video.mp4',
+                            time: '16:15, 10/4/2022'
+                        },
+                        {
+                            type: 'audio',
+                            from: 'other',
+                            messege: 'audio2.wav',
+                            time: '16:17, 10/4/2022'
+                        },
+                        {
+                            type: 'photo',
+                            from: '',
+                            messege: 'defualtIcon1.png',
+                            time: '16:20, 10/4/2022'
+                        }
+                    ]
                 }
             ]
 
@@ -118,6 +217,26 @@ export const data =
             nickname: 'Neta',
             pic: 'defualtIcon4.png',
             chats: []
+        },
+        {
+            username: 'Orian@gmail.com',
+            password: '1',
+            nickname: 'Orian',
+            pic: 'defualtIcon4.png',
+            chats: []
+        },
+        {
+            username: 'test1@gmail.com',
+            password: '1234',
+            nickname: 'test1',
+            pic: 'defualtIcon2.png',
+            chats: []
+        },
+        {
+            username: 'test2@gmail.com',
+            password: '1234',
+            nickname: 'test2',
+            pic: 'defualtIcon1.png',
+            chats: []
         }
-
     ];
