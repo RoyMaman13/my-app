@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './Conversation.css'
 import "./chatContent.css";
 import { Button, OverlayTrigger, Popover, Modal, Stack, Form } from 'react-bootstrap'
 import useRecorder from './useRecorder'
-import { render } from '@testing-library/react';
 
 let inMessage = null;
 let inPicture = null;
@@ -124,21 +123,21 @@ const Conversation = (props) => {
                 {Messeges.messegeHistory.map(({ type, from, messege, time }) => {
                     let sender = (from !== '') ? chatWith : "Me";
                     if (sender !== 'Me') {
-                        if (type == 'photo') {
+                        if (type === 'photo') {
                             return (
                                 /*other picture*/
                                 <div className="chat__item__content">
                                     <div className="chat__item-friend">
                                         <div>
                                             {sender + ':'}
-                                            <img src={messege} className="img" />
+                                            <img src={messege} className="img" alt='#' />
                                             <div className='timeShow'>{time}</div>
                                         </div>
                                     </div>
                                 </div>
                             );
                         }
-                        else if (type == 'video') {
+                        else if (type === 'video') {
                             return (
                                 /*other video*/
                                 <div className="chat__item__content">
@@ -154,7 +153,7 @@ const Conversation = (props) => {
                                 </div>
                             );
                         }
-                        else if (type == 'audio') {
+                        else if (type === 'audio') {
                             return (
                                 /*my audio*/
                                 <div className="chat__item__content">
@@ -184,22 +183,22 @@ const Conversation = (props) => {
                         }
                     }
                     else {
-                        if (type == 'photo') {
+                        if (type === 'photo') {
                             return (
                                 /*my picture*/
                                 <div className="chat__item__me">
                                     <div className="chat__item">
                                         <div>
                                             {sender + ':'}
-                                            <img src={messege} className="img" />
+                                            <img src={messege} className="img" alt='#' />
                                             <div className='timeShow'>{time}</div>
-                                            <div ref={scrollToBottom}></div>
+                                            {/* <div ref={scrollToBottom}></div> */}
                                         </div>
                                     </div>
                                 </div>
                             );
                         }
-                        else if (type == 'video') {
+                        else if (type === 'video') {
                             return (
                                 /*my video*/
                                 <div className="chat__item__me">
@@ -209,7 +208,7 @@ const Conversation = (props) => {
                                             <video width="360" height="250" controls>
                                                 <source src={messege} type="video/mp4"></source>
                                                 <div className='timeShow'>{time}</div>
-                                                <div ref={scrollToBottom}></div>
+                                                {/* <div ref={scrollToBottom}></div> */}
                                             </video>
 
                                         </div>
@@ -217,7 +216,7 @@ const Conversation = (props) => {
                                 </div>
                             );
                         }
-                        else if (type == 'audio') {
+                        else if (type === 'audio') {
                             return (
                                 /*my audio*/
                                 <div className="chat__item__me">
