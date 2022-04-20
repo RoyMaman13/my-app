@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 
